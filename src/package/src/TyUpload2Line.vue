@@ -3,7 +3,7 @@
         <i
           :class="['toyar', nm.b(), icon]"
           :style="{
-            fontSize: props.size > 0 ? size + 'px' : 'unset',
+            width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
             
           }"
@@ -34,7 +34,7 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        color: ;
+        
         display: inline-flex;
         justify-content: center;
         align-items: center;
