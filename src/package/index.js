@@ -1,3 +1,4 @@
+import allIcons from './iconList.js'
 
 import TyArrowLeftUpLine from './src/TyArrowLeftUpLine.vue'
 import TyArrowLeftUpFill from './src/TyArrowLeftUpFill.vue'
@@ -6115,5 +6116,6 @@ TyGolfBallFill,
 TyStairsLine,
 TyStairsFill,
 TyBookShelfLine,
-TyBookShelfFill
+TyBookShelfFill,
+allIcons
 }
