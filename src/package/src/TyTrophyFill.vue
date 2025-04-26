@@ -1,0 +1,43 @@
+
+      <template>
+        <i
+          :class="['toyar', nm.b(), icon]"
+          :style="{
+            fontSize: props.size > 0 ? size + 'px' : 'unset',
+            color: color?color :'',
+            
+          }"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.0049 16.9409V19.0027H18.0049V21.0027H6.00488V19.0027H11.0049V16.9409C7.05857 16.4488 4.00488 13.0824 4.00488 9.00275V3.00275H20.0049V9.00275C20.0049 13.0824 16.9512 16.4488 13.0049 16.9409ZM1.00488 5.00275H3.00488V9.00275H1.00488V5.00275ZM21.0049 5.00275H23.0049V9.00275H21.0049V5.00275Z"/></svg>
+        </i>
+      </template>
+      <script  setup>
+      import useNmSpace from "../utils/useBem"
+      defineOptions({
+        name:"TyTrophyFill"
+      })
+      const props = defineProps({
+          icon: {
+            type: String,
+            default: ""
+          },
+          size: {
+            type:Number,
+            default:12
+          },
+          color:{
+            type:String
+          }
+      })
+      const nm =useNmSpace('icon')
+      </script>
+      <style lang="scss" scoped>
+      .ty-icon {
+        font-size: 1em;
+        color: ;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: bottom;
+      }
+      </style>

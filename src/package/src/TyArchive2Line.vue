@@ -1,0 +1,43 @@
+
+      <template>
+        <i
+          :class="['toyar', nm.b(), icon]"
+          :style="{
+            width: props.size > 0 ? size + 'px' : 'unset',
+            color: color?color :'',
+            
+          }"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 20V7L20 3H4L2 7.00353V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20ZM4 9H20V19H4V9ZM5.236 5H18.764L19.764 7H4.237L5.236 5ZM15 11H9V13H15V11Z"/></svg>
+        </i>
+      </template>
+      <script  setup>
+      import useNmSpace from "../utils/useBem"
+      defineOptions({
+        name:"TyArchive2Line"
+      })
+      const props = defineProps({
+          icon: {
+            type: String,
+            default: ""
+          },
+          size: {
+            type:Number,
+            default:12
+          },
+          color:{
+            type:String
+          }
+      })
+      const nm =useNmSpace('icon')
+      </script>
+      <style lang="scss" scoped>
+      .ty-icon {
+        font-size: 1em;
+        
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: bottom;
+      }
+      </style>

@@ -1,0 +1,43 @@
+
+      <template>
+        <i
+          :class="['toyar', nm.b(), icon]"
+          :style="{
+            width: props.size > 0 ? size + 'px' : 'unset',
+            color: color?color :'',
+            
+          }"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 3C2.44772 3 2 3.44772 2 4V8L7.5 8V3H3ZM9.5 3V8H14.5V3H9.5ZM16.5 3V8H22V4C22 3.44772 21.5523 3 21 3H16.5ZM22 10H16.5V14H22V10ZM22 16H16.5V21H21C21.5523 21 22 20.5523 22 20V16ZM14.5 21V16H9.5V21H14.5ZM7.5 21V16H2V20C2 20.5523 2.44772 21 3 21H7.5ZM2 14H7.5V10L2 10V14ZM9.5 10H14.5V14H9.5V10Z"/></svg>
+        </i>
+      </template>
+      <script  setup>
+      import useNmSpace from "../utils/useBem"
+      defineOptions({
+        name:"TyLayoutGrid2Fill"
+      })
+      const props = defineProps({
+          icon: {
+            type: String,
+            default: ""
+          },
+          size: {
+            type:Number,
+            default:12
+          },
+          color:{
+            type:String
+          }
+      })
+      const nm =useNmSpace('icon')
+      </script>
+      <style lang="scss" scoped>
+      .ty-icon {
+        font-size: 1em;
+        
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: bottom;
+      }
+      </style>
