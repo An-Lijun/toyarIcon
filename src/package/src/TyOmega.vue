@@ -5,14 +5,13 @@
           :style="{
             width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
-            
           }"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14 20V17.8432C15.8631 16.6512 17.5 13.9677 17.5 10.8844C17.5 7.8107 15.5 4.85516 12 4.85516C8.5 4.85516 6.5 7.8107 6.5 10.8844C6.5 13.9677 8.13687 16.6512 10 17.8432V20H3V18H7.7597C5.66635 16.5054 4 13.9889 4 10.8844C4 6.24653 7.5 3 12 3C16.5 3 20 6.24653 20 10.8844C20 13.9889 18.3336 16.5054 16.2403 18H21V20H14Z"/></svg>
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../utils/useBem"
+      import useNmSpace from "../../../hooks/useBem"
       defineOptions({
         name:"TyOmega"
       })
@@ -23,7 +22,7 @@
           },
           size: {
             type:Number,
-            default:12
+            default: 12
           },
           color:{
             type:String
@@ -34,7 +33,6 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;

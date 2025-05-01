@@ -5,14 +5,13 @@
           :style="{
             width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
-            
           }"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.9967C6.47715 21.9967 2 17.5196 2 11.9967C2 6.47386 6.47715 1.9967 12 1.9967C17.5228 1.9967 22 6.47386 22 11.9967C22 17.5196 17.5228 21.9967 12 21.9967ZM12 19.9967V3.9967C7.58172 3.9967 4 7.57843 4 11.9967C4 16.415 7.58172 19.9967 12 19.9967Z"/></svg>
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../utils/useBem"
+      import useNmSpace from "../../../hooks/useBem"
       defineOptions({
         name:"TyContrastFill"
       })
@@ -23,7 +22,7 @@
           },
           size: {
             type:Number,
-            default:12
+            default: 12
           },
           color:{
             type:String
@@ -34,7 +33,6 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;

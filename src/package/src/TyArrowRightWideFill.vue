@@ -5,14 +5,13 @@
           :style="{
             width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
-            
           }"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M15.6315 12L10.8838 3.03212L9.11622 3.9679L13.3685 12L9.11622 20.0321L10.8838 20.9679L15.6315 12Z"/></svg>
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../utils/useBem"
+      import useNmSpace from "../../../hooks/useBem"
       defineOptions({
         name:"TyArrowRightWideFill"
       })
@@ -23,7 +22,7 @@
           },
           size: {
             type:Number,
-            default:12
+            default: 12
           },
           color:{
             type:String
@@ -34,7 +33,6 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;

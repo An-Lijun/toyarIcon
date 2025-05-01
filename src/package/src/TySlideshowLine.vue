@@ -5,14 +5,13 @@
           :style="{
             width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
-            
           }"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13 21V23H11V21H3C2.44772 21 2 20.5523 2 20V6H22V20C22 20.5523 21.5523 21 21 21H13ZM4 19H20V8H4V19ZM13 10H18V12H13V10ZM13 14H18V16H13V14ZM9 10V13H12C12 14.6569 10.6569 16 9 16C7.34315 16 6 14.6569 6 13C6 11.3431 7.34315 10 9 10ZM2 3H22V5H2V3Z"/></svg>
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../utils/useBem"
+      import useNmSpace from "../../../hooks/useBem"
       defineOptions({
         name:"TySlideshowLine"
       })
@@ -23,7 +22,7 @@
           },
           size: {
             type:Number,
-            default:12
+            default: 12
           },
           color:{
             type:String
@@ -34,7 +33,6 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;

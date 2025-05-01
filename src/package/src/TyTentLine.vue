@@ -5,14 +5,13 @@
           :style="{
             width: props.size > 0 ? size + 'px' : 'unset',
             color: color?color :'',
-            
           }"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.1034 19L12.8659 3.00017C12.7782 2.84815 12.6519 2.72191 12.4999 2.63414C12.0216 2.358 11.41 2.52187 11.1339 3.00017L1.89638 19H1V21C8.33333 21 15.6667 21 23 21V19H22.1034ZM7.59991 19.0002H4.20568L11.9999 5.50017L19.7941 19.0002H16.4001L12 11L7.59991 19.0002ZM12 15.1501L14.1175 19H9.88254L12 15.1501Z"/></svg>
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../utils/useBem"
+      import useNmSpace from "../../../hooks/useBem"
       defineOptions({
         name:"TyTentLine"
       })
@@ -23,7 +22,7 @@
           },
           size: {
             type:Number,
-            default:12
+            default: 12
           },
           color:{
             type:String
@@ -34,7 +33,6 @@
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;

@@ -4,7 +4,7 @@ import path from 'path'
 
 function toPascalCase(str) {
   const words = str.split('-');
-  return 'Ty'+words.map(word => {
+  return words.map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }).join('');
 }
@@ -21,13 +21,13 @@ const genTemp = (name) => {
             color: color?color :'',
           }"
         >
-          ${fs.readFileSync(path.resolve(`./assets/icons/${svgNm}.svg`), 'utf-8')}
+          ${fs.readFileSync(path.resolve(`./src/assets/icons/${name}.svg`), 'utf-8')}
         </i>
       </template>
       <script  setup>
       import useNmSpace from "../../../hooks/useBem"
       defineOptions({
-        name:"${fileName}"
+        name:"Ty${fileName}"
       })
       const props = defineProps({
           icon: {
@@ -55,29 +55,38 @@ const genTemp = (name) => {
       </style>`
   return {
     temp,
-    fileName
+    fileName : `Ty${fileName}`
   }
 }
 
+fs.readdir('./src/assets/icons', (err, files) => {
+  if (err) {
+      console.error('读取文件夹时出现错误:', err);
+      return;
+  }
+  console.log('文件夹中的文件名:', files);
+
+    const dirList = files.reduce((acc, item) => {
+      const name = item.replace('.svg', '')
+      
+      const { temp, fileName } = genTemp(name)
+      acc.push(fileName)
+      fs.writeFileSync(path.resolve(`./src/package/src/${fileName}.vue`), temp)
+      return acc
+    }, [])
+    
+    
+    let str = `
+    ${dirList.map(item => `import ${item} from './src/${item}.vue'`).join('\n')}
+    export {
+    ${dirList.join(',\n')}
+    }
+    `
+    
+    fs.writeFileSync(path.resolve(`./src/package/index.js`), str)
+});
 
 
-// const dirList = all.reduce((acc, item) => {
-//   const name = item.icon
-//   const { temp, fileName } = genTemp(name)
-//   acc.push(fileName)
-//   fs.writeFileSync(path.resolve(`./components/icons/src/${fileName}.vue`), temp)
-//   return acc
-// }, [])
-
-
-let str = `
-${dirList.map(item => `import ${item} from './src/${item}.vue'`).join('\n')}
-export {
-${dirList.join(',\n')}
-}
-`
-
-fs.writeFileSync(path.resolve(`./src/package/index.js`), str)
 
 
 
