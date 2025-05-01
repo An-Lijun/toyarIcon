@@ -1,11 +1,10 @@
 // genAsyncIcon.js
 import fs from 'fs'
 import path from 'path'
-import all from './iconList.js'
 
 function toPascalCase(str) {
   const words = str.split('-');
-  return words.map(word => {
+  return 'Ty'+words.map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }).join('');
 }
@@ -18,9 +17,8 @@ const genTemp = (name) => {
         <i
           :class="['toyar', nm.b(), icon]"
           :style="{
-            fontSize: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'var(--toyar-gray-10)',
-            width: props.size > 0? size + 'px' : 'unset',
+            width: props.size > 0 ? size + 'px' : 'unset',
+            color: color?color :'',
           }"
         >
           ${fs.readFileSync(path.resolve(`./assets/icons/${svgNm}.svg`), 'utf-8')}
@@ -38,7 +36,7 @@ const genTemp = (name) => {
           },
           size: {
             type:Number,
-            default: 0
+            default: 12
           },
           color:{
             type:String
@@ -49,7 +47,6 @@ const genTemp = (name) => {
       <style lang="scss" scoped>
       .ty-icon {
         font-size: 1em;
-        color: var(--toyar-gray-10);
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -62,13 +59,15 @@ const genTemp = (name) => {
   }
 }
 
-const dirList = all.reduce((acc, item) => {
-  const name = item.icon
-  const { temp, fileName } = genTemp(name)
-  acc.push(fileName)
-  fs.writeFileSync(path.resolve(`./components/icons/src/${fileName}.vue`), temp)
-  return acc
-}, [])
+
+
+// const dirList = all.reduce((acc, item) => {
+//   const name = item.icon
+//   const { temp, fileName } = genTemp(name)
+//   acc.push(fileName)
+//   fs.writeFileSync(path.resolve(`./components/icons/src/${fileName}.vue`), temp)
+//   return acc
+// }, [])
 
 
 let str = `
@@ -78,7 +77,7 @@ ${dirList.join(',\n')}
 }
 `
 
-fs.writeFileSync(path.resolve(`./components/icons/index.ts`), str)
+fs.writeFileSync(path.resolve(`./src/package/index.js`), str)
 
 
 
