@@ -2,7 +2,6 @@ import useNmSpace from "./useBem"
 export const nm =useNmSpace('icon')
 
 export const iconProps = {
-  props: {
     icon: {
       type: String,
       default: ""
@@ -14,5 +13,4 @@ export const iconProps = {
     color: {
       type: String
     }
-  }
 }
