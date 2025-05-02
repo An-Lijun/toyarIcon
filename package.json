@@ -1,14 +1,17 @@
 {
   "name": "toyaricon",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "description": "一个用于web的图标库",
   "main": "./dist/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
+  "module": "./dist",
+
   "keywords": [
     "svg",
     "icon",
