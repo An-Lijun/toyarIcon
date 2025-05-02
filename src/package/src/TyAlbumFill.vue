@@ -1,41 +1,18 @@
-
-      <template>
-        <i
-          :class="['toyar', nm.b(), icon]"
-          :style="{
-            width: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'',
-          }"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2ZM12 16C14.2133 16 16 14.2133 16 12C16 9.78667 14.2133 8 12 8C9.78667 8 8 9.78667 8 12C8 14.2133 9.78667 16 12 16ZM12 11C12.55 11 13 11.45 13 12C13 12.55 12.55 13 12 13C11.45 13 11 12.55 11 12C11 11.45 11.45 11 12 11Z"/></svg>
-        </i>
-      </template>
-      <script  setup>
-      import useNmSpace from "../utils/useBem"
-      defineOptions({
-        name:"TyAlbumFill"
-      })
-      const props = defineProps({
-          icon: {
-            type: String,
-            default: ""
-          },
-          size: {
-            type:Number,
-            default: 12
-          },
-          color:{
-            type:String
-          }
-      })
-      const nm =useNmSpace('icon')
-      </script>
-      <style lang="scss" scoped>
-      .ty-icon {
-        font-size: 1em;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: bottom;
-      }
-      </style>
+<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2ZM12 16C14.2133 16 16 14.2133 16 12C16 9.78667 14.2133 8 12 8C9.78667 8 8 9.78667 8 12C8 14.2133 9.78667 16 12 16ZM12 11C12.55 11 13 11.45 13 12C13 12.55 12.55 13 12 13C11.45 13 11 12.55 11 12C11 11.45 11.45 11 12 11Z"/></svg>
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyAlbumFill"
+  })
+  const props = defineProps(iconProps)
+</script>

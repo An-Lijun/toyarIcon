@@ -1,41 +1,18 @@
-
-      <template>
-        <i
-          :class="['toyar', nm.b(), icon]"
-          :style="{
-            width: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'',
-          }"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.9995 0.499512L16.9492 5.44926L15.535 6.86347L12.9995 4.32794V9.99951H10.9995L10.9995 4.32794L8.46643 6.86099L7.05222 5.44678L11.9995 0.499512ZM10.9995 13.9995L10.9995 19.6704L8.46448 17.1353L7.05026 18.5496L12 23.4995L16.9497 18.5498L15.5355 17.1356L12.9995 19.6716V13.9995H10.9995Z"/></svg>
-        </i>
-      </template>
-      <script  setup>
-      import useNmSpace from "../utils/useBem"
-      defineOptions({
-        name:"TyExpandVerticalLine"
-      })
-      const props = defineProps({
-          icon: {
-            type: String,
-            default: ""
-          },
-          size: {
-            type:Number,
-            default: 12
-          },
-          color:{
-            type:String
-          }
-      })
-      const nm =useNmSpace('icon')
-      </script>
-      <style lang="scss" scoped>
-      .ty-icon {
-        font-size: 1em;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: bottom;
-      }
-      </style>
+<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.9995 0.499512L16.9492 5.44926L15.535 6.86347L12.9995 4.32794V9.99951H10.9995L10.9995 4.32794L8.46643 6.86099L7.05222 5.44678L11.9995 0.499512ZM10.9995 13.9995L10.9995 19.6704L8.46448 17.1353L7.05026 18.5496L12 23.4995L16.9497 18.5498L15.5355 17.1356L12.9995 19.6716V13.9995H10.9995Z"/></svg>
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyExpandVerticalLine"
+  })
+  const props = defineProps(iconProps)
+</script>

@@ -12,47 +12,26 @@ function toPascalCase(str) {
 const genTemp = (name) => {
   const fileName = toPascalCase(name)
   const svgNm = name.slice(name.indexOf('-') + 1)
-  const temp = `
-      <template>
-        <i
-          :class="['toyar', nm.b(), icon]"
-          :style="{
-            width: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'',
-          }"
-        >
-          ${fs.readFileSync(path.resolve(`./src/assets/icons/${name}.svg`), 'utf-8')}
-        </i>
-      </template>
-      <script  setup>
-      import useNmSpace from "../utils/useBem"
-      defineOptions({
-        name:"Ty${fileName}"
-      })
-      const props = defineProps({
-          icon: {
-            type: String,
-            default: ""
-          },
-          size: {
-            type:Number,
-            default: 12
-          },
-          color:{
-            type:String
-          }
-      })
-      const nm =useNmSpace('icon')
-      </script>
-      <style lang="scss" scoped>
-      .ty-icon {
-        font-size: 1em;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: bottom;
-      }
-      </style>`
+  
+const temp = `<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    ${fs.readFileSync(path.resolve(`./src/assets/icons/${name}.svg`), 'utf-8')}
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"Ty${fileName}"
+  })
+  const props = defineProps(iconProps)
+</script>
+`
   return {
     temp,
     fileName : `Ty${fileName}`
@@ -77,6 +56,7 @@ fs.readdir('./src/assets/icons', (err, files) => {
     
     
     let str = `
+    import '../assets/index.css'
     ${dirList.map(item => `import ${item} from './src/${item}.vue'`).join('\n')}
     export {
     ${dirList.join(',\n')}

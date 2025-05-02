@@ -40,9 +40,11 @@
   "license": "MIT",
   "dependencies": {
     "sass": "^1.87.0",
+    "vite-plugin-style-inject": "^0.0.1",
     "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "@vitejs/plugin-vue": "^3.2.0",
     "svgtofont": "^6.3.2",
     "vite": "^6.3.3"

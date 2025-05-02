@@ -1,41 +1,18 @@
-
-      <template>
-        <i
-          :class="['toyar', nm.b(), icon]"
-          :style="{
-            width: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'',
-          }"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6.53451 3H20.9993C21.5516 3 21.9993 3.44772 21.9993 4V20C21.9993 20.5523 21.5516 21 20.9993 21H6.53451C6.20015 21 5.88792 20.8329 5.70246 20.5547L0.369122 12.5547C0.145189 12.2188 0.145189 11.7812 0.369122 11.4453L5.70246 3.4453C5.88792 3.1671 6.20015 3 6.53451 3ZM15.9993 11H8.99932V13H15.9993V11Z"/></svg>
-        </i>
-      </template>
-      <script  setup>
-      import useNmSpace from "../utils/useBem"
-      defineOptions({
-        name:"TyDeleteBackFill"
-      })
-      const props = defineProps({
-          icon: {
-            type: String,
-            default: ""
-          },
-          size: {
-            type:Number,
-            default: 12
-          },
-          color:{
-            type:String
-          }
-      })
-      const nm =useNmSpace('icon')
-      </script>
-      <style lang="scss" scoped>
-      .ty-icon {
-        font-size: 1em;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: bottom;
-      }
-      </style>
+<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6.53451 3H20.9993C21.5516 3 21.9993 3.44772 21.9993 4V20C21.9993 20.5523 21.5516 21 20.9993 21H6.53451C6.20015 21 5.88792 20.8329 5.70246 20.5547L0.369122 12.5547C0.145189 12.2188 0.145189 11.7812 0.369122 11.4453L5.70246 3.4453C5.88792 3.1671 6.20015 3 6.53451 3ZM15.9993 11H8.99932V13H15.9993V11Z"/></svg>
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyDeleteBackFill"
+  })
+  const props = defineProps(iconProps)
+</script>

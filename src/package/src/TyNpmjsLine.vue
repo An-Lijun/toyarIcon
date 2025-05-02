@@ -1,41 +1,18 @@
-
-      <template>
-        <i
-          :class="['toyar', nm.b(), icon]"
-          :style="{
-            width: props.size > 0 ? size + 'px' : 'unset',
-            color: color?color :'',
-          }"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.001 3C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3H20.001ZM19.001 5H5.00098V19H19.001V5ZM17.001 7V17H14.501V9.5H12.001V17H7.00098V7H17.001Z"/></svg>
-        </i>
-      </template>
-      <script  setup>
-      import useNmSpace from "../utils/useBem"
-      defineOptions({
-        name:"TyNpmjsLine"
-      })
-      const props = defineProps({
-          icon: {
-            type: String,
-            default: ""
-          },
-          size: {
-            type:Number,
-            default: 12
-          },
-          color:{
-            type:String
-          }
-      })
-      const nm =useNmSpace('icon')
-      </script>
-      <style lang="scss" scoped>
-      .ty-icon {
-        font-size: 1em;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: bottom;
-      }
-      </style>
+<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.001 3C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3H20.001ZM19.001 5H5.00098V19H19.001V5ZM17.001 7V17H14.501V9.5H12.001V17H7.00098V7H17.001Z"/></svg>
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyNpmjsLine"
+  })
+  const props = defineProps(iconProps)
+</script>
