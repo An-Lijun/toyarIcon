@@ -27,14 +27,14 @@ const temp = `<template>
 <script  setup>
   import {iconProps,nm} from "../utils/getProps"
   defineOptions({
-    name:"Ty${fileName}"
+    name:"Tyi${fileName}"
   })
   const props = defineProps(iconProps)
 </script>
 `
   return {
     temp,
-    fileName : `Ty${fileName}`
+    fileName : `Tyi${fileName}`
   }
 }
 

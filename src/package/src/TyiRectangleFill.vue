@@ -1,0 +1,18 @@
+<template>
+  <i
+    :class="['toyar', nm.b(), icon]"
+    :style="{
+      width: props.size > 0 ? size + 'px' : 'unset',
+      color: color?color :'',
+    }"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44772 4 3 4Z"/></svg>
+  </i>
+</template>
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyiRectangleFill"
+  })
+  const props = defineProps(iconProps)
+</script>

@@ -4,12 +4,12 @@ import path from "path";
 svgtofont({
   src: path.resolve(process.cwd(), "./src/assets/icons"), // svg 图标目录路径
   dist: path.resolve(process.cwd(), "./dist"), // 输出到指定目录中
-  fontName: "ty", // 设置字体名称
+  fontName: "tyi", // 设置字体名称
   css: true, // 生成字体文件
   "outSVGVue": true,
   
   useNameAsUnicode: false,
-  clssaNamePrefix:'ty-',
+  clssaNamePrefix:'tyi-',
   website: {
     title: "ToyarIcon",
     // Must be a .svg format image.
