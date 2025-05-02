@@ -1,4 +1,5 @@
-import Ty24HoursFill from './src/Ty24HoursFill.vue'
+
+    import Ty24HoursFill from './src/Ty24HoursFill.vue'
 import Ty24HoursLine from './src/Ty24HoursLine.vue'
 import Ty4kFill from './src/Ty4kFill.vue'
 import Ty4kLine from './src/Ty4kLine.vue'

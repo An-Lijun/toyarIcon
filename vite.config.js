@@ -9,7 +9,7 @@ export default defineConfig({
     minify: false,
     lib: {
       entry:  'src/package/index.js', // 设置入口文件
-      name: 'toyar', // 起个名字，安装、引入用
+      name: 'toyarIcon', // 起个名字，安装、引入用
       formats: ['es'], // 默认['es', 'umd']
       fileName: (format) => `vite-lib.${format}.js` // 打包后的文件名
     },

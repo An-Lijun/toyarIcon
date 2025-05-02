@@ -11,7 +11,7 @@
         </i>
       </template>
       <script  setup>
-      import useNmSpace from "../../../hooks/useBem"
+      import useNmSpace from "../utils/useBem"
       defineOptions({
         name:"TyCoinFill"
       })
