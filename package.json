@@ -9,6 +9,30 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "keywords": [
+    "svg",
+    "icon",
+    "font",
+    "webfont",
+    "icon",
+    "iconfont",
+    "font-face",
+    "compress",
+    "minify",
+    "font-cli",
+    "otf",
+    "ttf",
+    "woff",
+    "eot",
+    "svg",
+    "ttf2eot",
+    "ttf2woff",
+    "ttf2svg",
+    "svg2ttf",
+    "css",
+    "toyaricon"
+  ],
+  "license": "MIT",
   "dependencies": {
     "sass": "^1.87.0",
     "vue": "^3.2.41"
