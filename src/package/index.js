@@ -1,5 +1,4 @@
-
-    import '../assets/index.css'
+import '../assets/index.css'
     import Tyi24HoursFill from './src/Tyi24HoursFill.vue'
 import Tyi24HoursLine from './src/Tyi24HoursLine.vue'
 import Tyi4kFill from './src/Tyi4kFill.vue'
@@ -3059,7 +3058,7 @@ import TyiZoomOutLine from './src/TyiZoomOutLine.vue'
 import TyiZzzFill from './src/TyiZzzFill.vue'
 import TyiZzzLine from './src/TyiZzzLine.vue'
     export {
-    Tyi24HoursFill,
+      Tyi24HoursFill,
 Tyi24HoursLine,
 Tyi4kFill,
 Tyi4kLine,
@@ -6118,4 +6117,3 @@ TyiZoomOutLine,
 TyiZzzFill,
 TyiZzzLine
     }
-    
