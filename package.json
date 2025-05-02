@@ -1,7 +1,7 @@
 {
   "name": "toyaricon",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "description": "一个用于web的图标库",
   "main": "./dist/index.js",
