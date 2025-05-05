@@ -609,4 +609,5 @@ export const iconList608 = ["TyiWubiInput","TyiXboxFill","TyiXboxLine","TyiXingF
 export const iconList609 = ["TyiXrpFill","TyiXrpLine","TyiXtzFill","TyiXtzLine","TyiYoutubeFill"]
 export const iconList610 = ["TyiYoutubeLine","TyiYuqueFill","TyiYuqueLine","TyiZcoolFill","TyiZcoolLine"]
 export const iconList611 = ["TyiZhihuFill","TyiZhihuLine","TyiZoomInFill","TyiZoomInLine","TyiZoomOutFill"]
-export const iconList612 = ["TyiZoomOutLine","TyiZzzFill","TyiZzzLine"]export const maxPage = 3058
+export const iconList612 = ["TyiZoomOutLine","TyiZzzFill","TyiZzzLine"]
+export const maxPage = 3058

@@ -86,7 +86,7 @@ let str = `import '../assets/index.css'
       if(index !== splitList.length - 1){
         fileListStr+="\n"}
     })
-
+    fileListStr+="\n"
     fileListStr+=`export const maxPage = ${fileNms.length}`
     fs.writeFileSync(path.resolve(`./dist/iconList.js`), `${fileListStr}`)
 
