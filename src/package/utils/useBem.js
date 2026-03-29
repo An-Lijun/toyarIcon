@@ -1,4 +1,3 @@
-
 export const defaultNamespace = 'ty'
 
 const statePrefix = 'is-'
@@ -13,13 +12,7 @@ const statePrefix = 'is-'
   对于布尔开启状态使用 is-xxx 来表示状态
 
  */
-const genBem = (
-  block,
-  blockSuffix,
-  element,
-  modifier
-) => {
-
+const genBem = (block, blockSuffix, element, modifier) => {
   // 生成basename
   let cls = `${defaultNamespace}-${block}`
   // 生成后缀
@@ -37,14 +30,13 @@ const genBem = (
   return cls
 }
 
-export  default function useNmSpace(blockNm){
+export default function useNmSpace(blockNm) {
+  const is = (stateNm, isAddNm = true) => (isAddNm ? `${statePrefix}${stateNm}` : '')
 
-  const is =(stateNm,isAddNm=true)=>  isAddNm ? `${statePrefix}${stateNm}` : ''
-  
-  const b =()=>blockNm && blockNm ? genBem(blockNm) : ''
-  const e =(elNm)=> elNm&& elNm? genBem( blockNm, '', elNm):'' 
-  const m =(modifierNm)=>modifierNm&& modifierNm? genBem(blockNm,'','',modifierNm):''
-  const bem = (blockSuffix,elNm,modifierNm)=>genBem(blockNm,blockSuffix,elNm,modifierNm)
+  const b = () => (blockNm && blockNm ? genBem(blockNm) : '')
+  const e = elNm => (elNm && elNm ? genBem(blockNm, '', elNm) : '')
+  const m = modifierNm => (modifierNm && modifierNm ? genBem(blockNm, '', '', modifierNm) : '')
+  const bem = (blockSuffix, elNm, modifierNm) => genBem(blockNm, blockSuffix, elNm, modifierNm)
 
   return {
     is,

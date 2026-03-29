@@ -7,8 +7,10 @@
   "main": "./dist/index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node genIcon.js && node svgToIcon.js ",
-    "preview": "vite preview"
+    "build": "vite build && node genIcon.js && node svgToIcon.js",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "module": "./dist",
   "files": [
@@ -19,7 +21,6 @@
     "icon",
     "font",
     "webfont",
-    "icon",
     "iconfont",
     "font-face",
     "compress",
@@ -46,6 +47,9 @@
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@vitejs/plugin-vue": "^3.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "prettier": "^3.2.5",
     "svgtofont": "^6.3.2",
     "vite": "^6.3.3"
   }

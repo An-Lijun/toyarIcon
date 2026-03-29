@@ -1,11 +1,11 @@
-(function(){ try {var elementStyle = document.createElement('style'); elementStyle.appendChild(document.createTextNode(".ty-icon{font-size:1em;display:inline-flex;justify-content:center;align-items:center;vertical-align:bottom}")); document.head.appendChild(elementStyle);} catch(e) {console.error('vite-plugin-css-injected-by-js', e);} })();import { createElementBlock as l, openBlock as C, normalizeStyle as n, normalizeClass as r, unref as c, createElementVNode as t } from "vue";
+(function(){ try {const elementStyle = document.createElement('style'); elementStyle.appendChild(document.createTextNode(".ty-icon{font-size:1em;display:inline-flex;justify-content:center;align-items:center;vertical-align:bottom}")); document.head.appendChild(elementStyle);} catch(e) {console.error('vite-plugin-css-injected-by-js', e);} })();import { createElementBlock as l, openBlock as C, normalizeStyle as n, normalizeClass as r, unref as c, createElementVNode as t } from "vue";
 const y = (i, e, o, s) => {
   let w = `ty-${i}`;
   return e && (w += `-${e}`), // 生成元素
   o && (w += `__${o}`), //生成修饰符
   s && (w += `--${s}`), w;
 }, a = (L = "icon", { is: (i, e = !0) => e ? `is-${i}` : "", b: () => y(L), e: (i) => i && i ? y(L, "", i) : "", m: (i) => i && i ? y(L, "", "", i) : "", bem: (i, e, o) => y(L, i, e, o) });
-var L;
+let L;
 const p = { icon: { type: String, default: "" }, size: { type: Number, default: 12 }, color: { type: String } }, V = Object.assign({ name: "Tyi24HoursFill" }, { __name: "Tyi24HoursFill", props: p, setup(i) {
   const e = i;
   return (o, s) => (C(), l("i", { class: r(["toyar", c(a).b(), o.icon]), style: n({ width: e.size > 0 ? o.size + "px" : "unset", color: o.color ? o.color : "" }) }, s[0] || (s[0] = [t("svg", { viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" }, [t("path", { d: "M12.0049 13.0028C13.6617 13.0028 15.0049 14.346 15.0049 16.0028C15.0049 16.8519 14.6521 17.6187 14.0851 18.1645L12.175 20.0024L15.0049 20.0028V22.0028H9.00488L9.00398 20.2784L12.6983 16.7234C12.8874 16.5411 13.0049 16.2857 13.0049 16.0028C13.0049 15.4505 12.5572 15.0028 12.0049 15.0028C11.4526 15.0028 11.0049 15.4505 11.0049 16.0028H9.00488C9.00488 14.346 10.348 13.0028 12.0049 13.0028ZM18.0049 13.0028V17.0028H20.0049V13.0028H22.0049V22.0028H20.0049V19.0028H16.0049V13.0028H18.0049ZM4.00488 12.0028C4.00488 14.5294 5.17612 16.7824 7.00527 18.2485L7.0049 20.665C4.01588 18.9359 2.00488 15.7042 2.00488 12.0028H4.00488ZM12.0049 2.00281C17.1902 2.00281 21.4537 5.94943 21.9555 11.0027L19.943 11.0029C19.4509 7.05652 16.0845 4.00281 12.0049 4.00281C9.54102 4.00281 7.33731 5.11664 5.8698 6.86824L8.00488 9.00281H2.00488V3.00281L4.45144 5.44929C6.28491 3.3379 8.98898 2.00281 12.0049 2.00281Z" })], -1)]), 6));

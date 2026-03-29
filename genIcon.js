@@ -1,27 +1,31 @@
-// genAsyncIcon.js
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
 
 function toPascalCase(str) {
-  const words = str.split('-');
-  return words.map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join('');
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
 }
 
 function splitArrayIntoChunks(arr, chunkSize) {
-  const result = [];
+  const result = []
   for (let i = 0; i < arr.length; i += chunkSize) {
-      result.push(arr.slice(i, i + chunkSize));
+    result.push(arr.slice(i, i + chunkSize))
   }
-  return result;
+  return result
 }
 
-const genTemp = (name) => {
+const genTemp = async (name) => {
   const fileName = toPascalCase(name)
   const svgNm = name.slice(name.indexOf('-') + 1)
   
-const temp = `<template>
+  const svgContent = await fs.readFile(
+    path.resolve(process.cwd(), `./src/assets/icons/${name}.svg`),
+    'utf-8'
+  )
+  
+  const temp = `<template>
   <i
     :class="['toyar', nm.b(), icon]"
     :style="{
@@ -29,7 +33,7 @@ const temp = `<template>
       color: color?color :'',
     }"
   >
-    ${fs.readFileSync(path.resolve(`./src/assets/icons/${name}.svg`), 'utf-8')}
+    ${svgContent}
   </i>
 </template>
 <script  setup>
@@ -42,64 +46,84 @@ const temp = `<template>
 `
   return {
     temp,
-    fileName : `Tyi${fileName}`
+    fileName: `Tyi${fileName}`
   }
 }
 
-const fileNms=[]
-fs.readdir('./src/assets/icons', (err, files) => {
-  if (err) {
-      console.error('读取文件夹时出现错误:', err);
-      return;
+const ensureDir = async (dirPath) => {
+  try {
+    await fs.access(dirPath)
+  } catch {
+    await fs.mkdir(dirPath, { recursive: true })
   }
-  console.log('文件夹中的文件名:', files);
+}
 
-    const dirList = files.reduce((acc, item) => {
-      const name = item.replace('.svg', '')
-      
-      const { temp, fileName } = genTemp(name)
+const generateIconComponents = async () => {
+  try {
+    console.log('🚀 开始生成图标组件...')
+    
+    const iconsDir = path.resolve(process.cwd(), './src/assets/icons')
+    const packageSrcDir = path.resolve(process.cwd(), './src/package/src')
+    const distDir = path.resolve(process.cwd(), './dist')
+    
+    await ensureDir(packageSrcDir)
+    await ensureDir(distDir)
+    
+    const files = await fs.readdir(iconsDir)
+    const svgFiles = files.filter(file => file.endsWith('.svg'))
+    
+    console.log(`📁 找到 ${svgFiles.length} 个 SVG 文件`)
+    
+    const fileNms = []
+    const dirList = []
+    
+    for (const file of svgFiles) {
+      const name = file.replace('.svg', '')
+      const { temp, fileName } = await genTemp(name)
       fileNms.push(fileName)
-      acc.push(fileName)
-      fs.writeFileSync(path.resolve(`./src/package/src/${fileName}.vue`), temp)
-      return acc
-    }, [])
+      dirList.push(fileName)
+      
+      await fs.writeFile(path.resolve(packageSrcDir, `${fileName}.vue`), temp)
+    }
     
+    console.log('✅ 生成 Vue 组件完成')
     
+    const indexContent = `import '../assets/index.css'
+${dirList.map(item => `import ${item} from './src/${item}.vue'`).join('\n')}
+export {
+  ${dirList.join(',\n')}
+}`
     
-let str = `import '../assets/index.css'
-    ${dirList.map(item => `import ${item} from './src/${item}.vue'`).join('\n')}
-    export {
-      ${dirList.join(',\n')}
-    }`
+    await fs.writeFile(path.resolve(process.cwd(), './src/package/index.js'), indexContent)
+    console.log('✅ 生成 index.js 完成')
     
-
-
-
-    fs.writeFileSync(path.resolve(`./src/package/index.js`), str)
-
-    const splitList = splitArrayIntoChunks(fileNms,5)
-
-    let fileListStr =""
-
-    splitList.forEach((item,index)=>{
-      fileListStr+= `export const iconList${index+1} = ${JSON.stringify(item)}`
-      if(index !== splitList.length - 1){
-        fileListStr+="\n"}
+    const splitList = splitArrayIntoChunks(fileNms, 5)
+    
+    let fileListStr = ''
+    splitList.forEach((item, index) => {
+      fileListStr += `export const iconList${index + 1} = ${JSON.stringify(item)}`
+      if (index !== splitList.length - 1) {
+        fileListStr += '\n'
+      }
     })
-    fileListStr+="\n"
-    fileListStr+=`export const maxPage = ${fileNms.length}`
-    fs.writeFileSync(path.resolve(`./dist/iconList.js`), `${fileListStr}`)
+    fileListStr += '\n'
+    fileListStr += `export const maxPage = ${fileNms.length}`
+    
+    await fs.writeFile(path.resolve(distDir, 'iconList.js'), fileListStr)
+    console.log('✅ 生成 iconList.js 完成')
+    
+    const asyncModuleContent = `export default function (compName) {
+  return import('./index.js').then((module) => module[compName]);
+}`
+    
+    await fs.writeFile(path.resolve(distDir, 'getAsyncModule.js'), asyncModuleContent)
+    console.log('✅ 生成 getAsyncModule.js 完成')
+    
+    console.log('🎉 所有图标组件生成完成！')
+  } catch (error) {
+    console.error('❌ 生成图标组件时出错:', error)
+    process.exit(1)
+  }
+}
 
-    fs.writeFileSync(path.resolve(`./dist/getAsyncModule.js`), `export default function (compName) {
-        defineAsyncComponent(() => import('./index.js').then((module) => module[compName]));
-    }`)
-
-});
-
-
-
-
-
-
-
-
+generateIconComponents()
