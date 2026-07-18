@@ -3,22 +3,16 @@
     :class="['toyar', nm.b(), icon]"
     :style="{
       width: props.size > 0 ? size + 'px' : 'unset',
-      color: color ? color : ''
+      color: color?color :'',
     }"
   >
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z" />
-    </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"/></svg>
   </i>
 </template>
-<script setup>
-import { iconProps, nm } from '../utils/getProps'
-defineOptions({
-  name: 'TyiCrossFill'
-})
-const props = defineProps(iconProps)
+<script  setup>
+  import {iconProps,nm} from "../utils/getProps"
+  defineOptions({
+    name:"TyiCrossFill"
+  })
+  const props = defineProps(iconProps)
 </script>
