@@ -112,6 +112,38 @@ export {
     await fs.writeFile(path.resolve(distDir, 'iconList.js'), fileListStr)
     console.log('✅ 生成 iconList.js 完成')
 
+    const dtsContent = `import type { DefineComponent, ComponentOptionsMixin, PropType } from 'vue';
+
+export interface TyiIconProps {
+  icon?: string;
+  size?: number;
+  color?: string;
+}
+
+export type TyiIconComponent = DefineComponent<
+  {
+    icon?: { type: PropType<string>; default: string };
+    size?: { type: PropType<number>; default: number };
+    color?: { type: PropType<string> };
+  },
+  unknown,
+  unknown,
+  unknown,
+  unknown,
+  ComponentOptionsMixin,
+  ComponentOptionsMixin,
+  {},
+  string,
+  {},
+  {},
+  {}
+>;
+
+${fileNms.map(name => `export const ${name}: TyiIconComponent;`).join('\n')}
+`
+    await fs.writeFile(path.resolve(distDir, 'index.d.ts'), dtsContent)
+    console.log('✅ 生成 index.d.ts 完成')
+
     const asyncModuleContent = `export default function (compName) {
   return import('./index.js').then((module) => module[compName]);
 }`

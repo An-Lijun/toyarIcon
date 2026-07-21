@@ -5,6 +5,17 @@
   "type": "module",
   "description": "一个用于web的图标库",
   "main": "./dist/index.js",
+  "module": "./dist",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build && node genIcon.js && node svgToIcon.js",
@@ -12,7 +23,6 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
-  "module": "./dist",
   "files": [
     "/dist/*"
   ],
